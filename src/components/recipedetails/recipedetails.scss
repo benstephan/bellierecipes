@@ -1,0 +1,38 @@
+.recipe-details{
+    margin-top:60px;
+    margin-bottom:60px;
+    &__header{
+        display:flex;
+        flex-direction: row;
+        align-items:center;
+        border-bottom:1px solid #EEE;
+        padding-bottom:20px;
+        margin-bottom:20px;
+
+        &__image{
+            margin-right:30px;
+            img{
+                max-width:250px;
+            }
+        }
+    }
+    &__body{
+        display:flex;
+        flex-direction:row;
+    }
+    &__ingredients{
+        width:25%;
+        ul{
+            list-style-type:none;
+            padding:0;
+            li{
+                padding:2px;
+                border-bottom:1px solid #EEE;
+            }
+        }
+    }
+    &__steps{
+        flex-grow: 2;
+        padding-left:30px;
+    }
+}
