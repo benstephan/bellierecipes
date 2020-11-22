@@ -26,10 +26,10 @@ class RecipeDetails extends React.Component {
             {this.state.recipes.filter(recipe => recipe.slug===urlID).map((recipe, i) => (
                 <div className="recipe-details small-container" key={i}>
                     <div className="recipe-details__header">
-                        <div class="recipe-details__header__image">
+                        <div className="recipe-details__header__image">
                             <img src={recipe.imageURL} alt={recipe.name} />
                         </div>
-                        <div class="recipe-details__header__title">
+                        <div className="recipe-details__header__title">
                             <h1>{recipe.name}</h1>
                             <button onClick={() => {}} className={recipe.favorite ? 'recipe-details__favorite' : 'recipe-details__not-favorite'}><FontAwesomeIcon icon={faHeart} /></button>
                         </div>
