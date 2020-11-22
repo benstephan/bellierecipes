@@ -53,22 +53,23 @@ class AddRecipeForm extends React.Component {
     }
     addStep(e){
         e.preventDefault();
-        this.setState({ recipesteps: [...this.state.recipesteps, this.state.recipestep] })
-        this.setState({ recipetimers: [...this.state.recipetimers, this.state.recipetimer] })
-        this.setState({recipestep: ''});
-        this.setState({recipetimer: ''});
+        
+        this.setState({ recipesteps: [...this.state.recipesteps, this.state.recipestep],
+            recipetimers: [...this.state.recipetimers, this.state.recipetimer],
+            recipestep: '',
+            recipetimer: ''
+        })
     }
     addIngredient(e){
         e.preventDefault();
         
-        this.setState({ recipeingredientnames: [...this.state.recipeingredientnames, this.state.recipeingredientname] })
-        this.setState({ recipequantities: [...this.state.recipequantities, this.state.recipequantity] })
-        this.setState({ recipetypes: [...this.state.recipetypes, this.state.recipetype] })
-        
-        this.setState({recipetype: ''});
-        this.setState({recipequantity: ''});
-        this.setState({recipeingredientname: ''});
-
+        this.setState({ 
+            recipeingredientnames: [...this.state.recipeingredientnames, this.state.recipeingredientname],
+            recipequantities: [...this.state.recipequantities, this.state.recipequantity],
+            recipetypes: [...this.state.recipetypes, this.state.recipetype],
+            recipetype: '',
+            recipequantity: ''
+        })
     }
     handleSubmit(e){
         e.preventDefault();
@@ -106,6 +107,22 @@ class AddRecipeForm extends React.Component {
             axios.post('http://localhost:4000/addRecipe', recipeObject)
             .then((res) => {
                 console.log(res.data)
+                this.setState({
+                    recipeimage: '',
+                    recipename: '',
+                    recipestep: '',
+                    recipesteps: [],
+                    recipetimer: '',
+                    recipetimers: [],
+                    recipeingredientname: '',
+                    recipequantity: '',
+                    recipetype: '',
+                    recipeingredientnames: [],
+                    recipequantities: [],
+                    recipetypes: [],
+                    recipeingredients: [],
+                })
+                
             }).catch((error) => {
                 console.log('Axios Error: ', error)
             });        
@@ -150,7 +167,7 @@ class AddRecipeForm extends React.Component {
                         onChange={this.handleTimers}
                         value={this.state.recipetimers}   
                         ></textarea>
-                        <div class="form-row">
+                        <div className="form-row">
                         <input 
                             type="text" 
                             name="recipe-step" 
@@ -167,8 +184,12 @@ class AddRecipeForm extends React.Component {
                             value={this.state.recipetimer}  
                             placeholder="Time for Step"  
                         />
-                        <button onClick={this.addStep.bind(this)} className="add-recipe-form__add-btn"><FontAwesomeIcon icon={faPlus} /></button>
+                       <button onClick={this.addStep.bind(this)} className="add-recipe-form__add-btn"><FontAwesomeIcon icon={faPlus} /></button>
                         </div>
+                        {this.state.recipesteps.map((step, i) => {
+                            return <span key={i}>{step} {this.state.recipetimers[i]} <button className="add-recipe-form__add-btn"><FontAwesomeIcon icon={faMinus} /></button></span>
+                        })}
+                        
                     </fieldset>
                     <fieldset>
                     <label>Recipe Ingredients</label>
@@ -187,7 +208,7 @@ class AddRecipeForm extends React.Component {
                         onChange={this.handleTypes}
                         value={this.state.recipetypes}   
                         ></textarea>
-                        <div class="form-row">
+                        <div className="form-row">
                         <input 
                             type="text" 
                             name="recipe-ingredient-name" 
