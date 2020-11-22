@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import './addrecipe.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 
 class AddRecipeForm extends React.Component {
     constructor(props) {
@@ -60,6 +60,7 @@ class AddRecipeForm extends React.Component {
     }
     addIngredient(e){
         e.preventDefault();
+        
         this.setState({ recipeingredientnames: [...this.state.recipeingredientnames, this.state.recipeingredientname] })
         this.setState({ recipequantities: [...this.state.recipequantities, this.state.recipequantity] })
         this.setState({ recipetypes: [...this.state.recipetypes, this.state.recipetype] })
@@ -67,6 +68,7 @@ class AddRecipeForm extends React.Component {
         this.setState({recipetype: ''});
         this.setState({recipequantity: ''});
         this.setState({recipeingredientname: ''});
+
     }
     handleSubmit(e){
         e.preventDefault();
@@ -85,7 +87,6 @@ class AddRecipeForm extends React.Component {
             singleIng.quantity = recipeQuantities[i]
             singleIng.type = recipeTypes[i];
             return ingList.push(singleIng);
-            
         });
 
         const recipeObject = {
@@ -149,6 +150,7 @@ class AddRecipeForm extends React.Component {
                         onChange={this.handleTimers}
                         value={this.state.recipetimers}   
                         ></textarea>
+                        <div class="form-row">
                         <input 
                             type="text" 
                             name="recipe-step" 
@@ -165,7 +167,8 @@ class AddRecipeForm extends React.Component {
                             value={this.state.recipetimer}  
                             placeholder="Time for Step"  
                         />
-                        <button onClick={this.addStep.bind(this)}><FontAwesomeIcon icon={faPlus} /></button>
+                        <button onClick={this.addStep.bind(this)} className="add-recipe-form__add-btn"><FontAwesomeIcon icon={faPlus} /></button>
+                        </div>
                     </fieldset>
                     <fieldset>
                     <label>Recipe Ingredients</label>
@@ -184,6 +187,7 @@ class AddRecipeForm extends React.Component {
                         onChange={this.handleTypes}
                         value={this.state.recipetypes}   
                         ></textarea>
+                        <div class="form-row">
                         <input 
                             type="text" 
                             name="recipe-ingredient-name" 
@@ -208,9 +212,13 @@ class AddRecipeForm extends React.Component {
                             value={this.state.recipetype}    
                             placeholder="Type of Ingredient"
                         />
-                        <button onClick={this.addIngredient.bind(this)}><FontAwesomeIcon icon={faPlus} /></button>
+                        <button onClick={this.addIngredient.bind(this)} className="add-recipe-form__add-btn"><FontAwesomeIcon icon={faPlus} /></button>
+                        </div>
+                        {this.state.recipeingredientnames.map((ingredient, i) => {
+                            return <span key={i}>{ingredient} {this.state.recipequantities[i]} {this.state.recipetypes[i]} <button className="add-recipe-form__add-btn"><FontAwesomeIcon icon={faMinus} /></button></span>
+                        })}
                     </fieldset>
-                    <button type="submit" onClick={this.handleSubmit.bind(this)} className="btn">Submit</button>
+                    <button type="submit" onClick={this.handleSubmit.bind(this)} className="btn btn-primary">Submit</button>
                 </form>
             </div>
         )
