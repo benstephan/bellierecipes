@@ -6,7 +6,8 @@ import { faUser, faSlidersH, faSearch } from '@fortawesome/free-solid-svg-icons'
 import './header.css';
 
 export class Header extends Component {
-    render() {
+    render() {  
+        const username = localStorage.getItem('name');
         return (
             <div className="main-header">
                 <div className="main-header__logo">
@@ -16,7 +17,7 @@ export class Header extends Component {
                     <nav>
                         <button><FontAwesomeIcon icon={faSearch} /></button>
                         <button><FontAwesomeIcon icon={faSlidersH} /></button>
-                        <button><a href="/profile"><FontAwesomeIcon icon={faUser} /></a></button>
+                        <button><a href="/profile"><FontAwesomeIcon icon={faUser} />{username ? `${username}` : ''}</a></button>
                     </nav>
                 </div>
             </div>

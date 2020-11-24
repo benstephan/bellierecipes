@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
+
 class LoginForm extends React.Component {
     constructor(props) {
         super(props);
@@ -37,7 +38,11 @@ class LoginForm extends React.Component {
                 res.data.some(user => {
                     if(loginObject.login === user.login){
                         if(loginObject.password === user.password){
-                            console.log('both match');
+                            localStorage.setItem('loggedin', true);
+                            localStorage.setItem('name', user.username);
+                            localStorage.setItem('loggedin', user.email);
+                            localStorage.setItem('loggedin', user.login);
+                         
                             return true;
                         }else{
                             console.log('did not match');
