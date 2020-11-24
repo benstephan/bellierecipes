@@ -10,6 +10,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 let recipe = require("./model");
+let user = require("./users");
 
 mongoose.connect("mongodb://127.0.0.1:27017/local", {
   useNewUrlParser: true
@@ -41,6 +42,15 @@ app.post('/addRecipe', (req, res) => {
     .catch(err => {
       res.status(400).send("unable to save to database");
     });
+});
+router.route("/login").get(function(req, res) {
+  user.find({}, function(err, result) {
+    if (err) {
+      res.send(err);
+    } else {
+      res.send(result);
+    }
+  });
 });
 
 app.listen(PORT, function() {

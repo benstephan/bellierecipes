@@ -11,6 +11,7 @@ import Home from './pages/Home';
 import RecipeDetailsPage from './pages/RecipeDetailsPage';
 import ProfilePage from './pages/ProfilePage';
 import AddRecipePage from './pages/AddRecipe';
+import LoginPage from './pages/Login';
 import Header from './components/header/Header';
 import AddRecipeButton from './components/addrecipebutton/AddRecipeButton';
 
@@ -28,6 +29,9 @@ function App() {
           </Route>
           <Route path="/add-recipe">
             <AddRecipepage />
+          </Route>
+          <Route path="/login">
+            <Loginpage />
           </Route>
           <Route path="/">
             <Homepage />
@@ -50,6 +54,9 @@ function Profilepage() {
 }
 function AddRecipepage() {
   return <AddRecipePage />;
+}
+function Loginpage() {
+  return <LoginPage />;
 }
 
 export default App;
