@@ -168,6 +168,7 @@ class AddRecipeForm extends React.Component {
                         value={this.state.recipetimers}   
                         ></textarea>
                         <div className="form-row">
+                        <div>
                         <input 
                             type="text" 
                             name="recipe-step" 
@@ -176,6 +177,8 @@ class AddRecipeForm extends React.Component {
                             value={this.state.recipestep}
                             placeholder="Step Description"
                         />
+                        </div>
+                        <div>
                         <input 
                             type="text" 
                             name="recipe-timer" 
@@ -184,7 +187,10 @@ class AddRecipeForm extends React.Component {
                             value={this.state.recipetimer}  
                             placeholder="Time for Step"  
                         />
+                        </div>
+                        <div>
                        <button onClick={this.addStep.bind(this)} className="add-recipe-form__add-btn"><FontAwesomeIcon icon={faPlus} /></button>
+                       </div>
                         </div>
                         {this.state.recipesteps.map((step, i) => {
                             return <span key={i}>{step} {this.state.recipetimers[i]} <button className="add-recipe-form__add-btn"><FontAwesomeIcon icon={faMinus} /></button></span>

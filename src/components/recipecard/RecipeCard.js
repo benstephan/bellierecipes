@@ -14,7 +14,7 @@ const RecipeCard = ({ recipes }) => {
           
           <div className="recipe-card__details">
               <h2>{recipe.name}</h2>
-              
+              <p>{recipe.author}</p>
           </div>
         </a>
       </div>

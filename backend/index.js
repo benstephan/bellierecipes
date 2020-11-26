@@ -33,6 +33,17 @@ router.route("/getData").get(function(req, res) {
     }
   });
 });
+router.route("/getMyRecipes").get(function(req, res) {
+  const id = req.params.author;
+  recipe.find({}, function(err, result) {
+    if (err) {
+      res.send(err);
+    } else {
+      res.send(result);
+      console.log(id);
+    }
+  });
+});
 app.post('/addRecipe', (req, res) => {
     var myData = new recipe(req.body);
     myData.save()

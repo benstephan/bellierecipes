@@ -2,7 +2,8 @@
     border:1px solid #DDD;
     padding:10px;
     border-radius:5px;
-
+    width:100%;
+    margin:0 5px;
     &:focus{
         box-shadow:0 0 5px rgba(35, 166, 61,0.7);
     }
@@ -13,9 +14,27 @@
 fieldset{
     border:none;
     padding:10px 0;
+}
+.form-row{
     display:flex;
-    flex-direction:column;
+    flex-direction:row;
+    flex-wrap: nowrap;
+    align-content: stretch;
+    width:100%;
+    align-items: center;
+    div{
+        flex-grow: 1;
+        margin:0 5px;
+        &:last-child{
+            flex-grow:0;
+        }
+        input{
+            width:100%;
+        }
+    }
 }
 label{
     margin-bottom:5px;
+    display:block;
+    width:100%;
 }
