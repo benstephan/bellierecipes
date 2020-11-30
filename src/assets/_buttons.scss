@@ -14,4 +14,20 @@
             background:#DDD;
         }
     }
+    &.btn-danger{
+        background:red;
+        color:#FFF;
+
+        &:hover{
+            background:darken(red, 15%);
+        }
+    }
+    &.btn-success{
+        background:green;
+        color:#FFF;
+
+        &:hover{
+            background:darken(green, 15%);
+        }
+    }
 }
