@@ -8,23 +8,20 @@ export class ProfileRecipes extends React.Component {
         recipes: []
     }
     componentDidMount() {
-        const authorName = localStorage.getItem('name');
         fetch(`http://localhost:4000/getData`)
-        .then(res => res.json())
-        .then((res) => {
-            this.setState({ recipes: res })
-        })
+            .then(res => res.json())
+            .then((res) => {
+                this.setState({ recipes: res })
+            })
 
-        .catch(console.log)
+            .catch(console.log)
     }
 
-    
-    
     render() {
         let loginID = localStorage.getItem('loggedin');
         return (
             <div className="profile-recipe-list">
-                {this.state.recipes.filter(recipe => recipe.author===loginID).map((recipe, i) => (
+                {this.state.recipes.filter(recipe => recipe.author === loginID).map((recipe, i) => (
                     <div className="profile-recipe-list__card" key={i}>
                         <div className="profile-recipe-list__image"><img src={recipe.imageURL} alt={recipe.name} /></div>
                         <div className="profile-recipe-list__recipe-title">{recipe.name}</div>
@@ -35,7 +32,7 @@ export class ProfileRecipes extends React.Component {
                     </div>
                 ))}
             </div>
-            
+
         )
     }
 }
