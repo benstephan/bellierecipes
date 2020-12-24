@@ -18,6 +18,10 @@
             padding:10px 12px;
             border-radius:100px;
             margin-left:10px;
+            
+            &:hover{
+                cursor:pointer;
+            }
         }
         a{
             color:#000;

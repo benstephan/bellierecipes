@@ -8,6 +8,10 @@ import './header.css';
 export class Header extends Component {
     render() {  
         const username = localStorage.getItem('name');
+        const displaySearch = () => {
+            const searchBox = document.querySelector('.search-form');
+            searchBox.classList.add('show');
+        }
         return (
             <div className="main-header">
                 <div className="main-header__logo">
@@ -15,7 +19,7 @@ export class Header extends Component {
                 </div>
                 <div className="main-header__navigation">
                     <nav>
-                        <button><FontAwesomeIcon icon={faSearch} /></button>
+                        <button id="search-button" onClick={displaySearch}><FontAwesomeIcon icon={faSearch} /></button>
                         <button><FontAwesomeIcon icon={faSlidersH} /></button>
                         <button><a href="/profile"><FontAwesomeIcon icon={faUser} />{username ? `${username}` : ''}</a></button>
                     </nav>

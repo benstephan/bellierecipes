@@ -14,10 +14,12 @@ import AddRecipePage from './pages/AddRecipe';
 import LoginPage from './pages/Login';
 import Header from './components/header/Header';
 import AddRecipeButton from './components/addrecipebutton/AddRecipeButton';
+import SearchForm from './components/search/searchform/SearchForm';
 
 function App() {
   return (
     <div className="App">
+      <SearchForm />
       <Header />
       <Router>
         <Switch>
