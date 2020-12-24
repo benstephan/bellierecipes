@@ -15,6 +15,7 @@ import LoginPage from './pages/Login';
 import Header from './components/header/Header';
 import AddRecipeButton from './components/addrecipebutton/AddRecipeButton';
 import SearchForm from './components/search/searchform/SearchForm';
+import SearchResultsPage from './pages/SearchResults';
 
 function App() {
   return (
@@ -25,6 +26,9 @@ function App() {
         <Switch>
           <Route path="/recipe/:id">
             <RecipeDetailPage />
+          </Route>
+          <Route path="/search-results/:id">
+            <SearchResults />
           </Route>
           <Route path="/profile">
             <Profilepage />
@@ -50,6 +54,9 @@ function Homepage() {
 }
 function RecipeDetailPage() {
   return <RecipeDetailsPage />;
+}
+function SearchResults() {
+  return <SearchResultsPage />;
 }
 function Profilepage() {
   return <ProfilePage />;
